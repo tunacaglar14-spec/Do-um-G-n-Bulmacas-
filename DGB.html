@@ -1,0 +1,185 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doğum Günü Bulmacası</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 20px; background: #f3e8ff; color: #333; }
+h1,h2,h3 { color: #d6336c; }
+button { padding: 10px 20px; margin-top: 20px; background: #d6336c; color: white; border: none; border-radius: 5px; cursor: pointer; }
+button:hover { background: #c61b5a; }
+.info { background: #ffe0e6; padding: 15px; border-radius: 10px; margin-bottom: 20px; }
+input[type="text"] { padding: 8px; width: 200px; }
+pre { background: #fff0f0; padding: 10px; border-radius: 5px; overflow-x:auto; }
+</style>
+</head>
+<body>
+
+<div id="container">
+
+<!-- Başlangıç -->
+<div id="start">
+<h1>🎉 Doğum günü bulmacasına hoş geldin Ezoli! 🎉</h1>
+<h2>İyi ki doğdun! 🥳🥳🥳</h2>
+<div class="info">
+<h3>KURALLAR</h3>
+<ul>
+<li>Bulmaca 4 sorudan oluşmaktadır.</li>
+<li>Doğru cevap verilen her sorunun sonunda bir bilgiye veya bir koda ulaşılmaktadır.</li>
+<li>Bulmacanın amacı ise elde edilen çıktıları kullanarak bulmacadaki tüm kodları çözmektir.</li>
+</ul>
+</div>
+<div class="info">
+<h3>İPUÇLARI</h3>
+<ul>
+<li>Kodları çözmek için yanına kağıt kalem almayı unutma.</li>
+<li>Bulmaca basit, maks 15 dakikada çözersin.</li>
+</ul>
+</div>
+<button id="startBtn" onclick="startGame()">Başla 🚀</button>
+</div>
+
+<!-- Soru 1 -->
+<div id="q1" style="display:none;">
+<h2>Soru 1</h2>
+<p>Nişantaşı'nda en çok gittiğimiz kafenin adı ne? (... Coffee)</p>
+<input type="text" id="answer1">
+<button onclick="checkAnswer1()">Gönder</button>
+<p id="wrong1" style="color:red;"></p>
+</div>
+
+<div id="info1" style="display:none;">
+<h3>Bravo!!! İlk soruyu doğru yanıtladın!</h3>
+<p>
+Sezar Şifresi, Sezar zamanına tarihlendirilen çok eski bir şifreleme tekniğidir. Şifrelenmek istenen metnin bütün harfleri, alfabetik sırada belli bir harf kadar kaydırılır. Bu kaydırılan harf sayısına "anahtar" denir.
+</p>
+<p>
+Örneğin Tuna kelimesini 'anahtar=2'ye göre çevirirsek:<br>
+T → kendisinden 2 harf sonraki Ü harfine dönüşecek<br>
+U → V<br>
+N → Ö<br>
+A → C<br>
+Yani Tuna, bu durumda "Üvöc" olacak.
+</p>
+<p>
+Not: Eğer alfabenin sonuna gelinirse ve harfin hala kaydırılması gerekiyorsa, alfabenin en başına döndürülerek kaydırılmaya devam edilir.
+</p>
+<p>
+Örneğin, anahtarımız 2 iken Ezo kelimesi:<br>
+E → G<br>
+Z → B (Z'den sonra A ve sonrasında B)<br>
+O → P<br>
+Gbp olacak.
+</p>
+<p>(Türk Alfabesi'ni baz alıyoruz.)</p>
+<button onclick="goTo('q2')">Soruya geç ➡️</button>
+</div>
+
+<!-- Soru 2 -->
+<div id="q2" style="display:none;">
+<h2>Soru 2</h2>
+<p>Seninle sohbetimizin başlamasına vesile olan olay hangi özel günde yaşandı?</p>
+<input type="text" id="answer2">
+<button onclick="checkAnswer2()">Gönder</button>
+<p id="wrong2" style="color:red;"></p>
+</div>
+
+<div id="info2" style="display:none;">
+<h3>Fenasalsın! Sıradaki bilgilendirmemiz: Mors Kodu</h3>
+<p>
+Mors kodu, kısa ve uzun işaretler (• ve –) kullanılarak her harfi temsil edecek 
+birer kodun oluşturulduğu yönteme denir. İşte İngilizce klavyedeki harfler ve Mors kodu karşılıkları:
+</p>
+<pre>
+A •−      B −•••    C −•−•    D −••
+E •       F ••−•    G −−•     H ••••
+I ••      J •−−−    K −•−     L •−••
+M −−      N −•      O −−−     P •−−•
+Q −−•−    R •−•     S •••     T −
+U ••−     V •••−    W •−−     X −••−
+Y −•−−    Z −−••
+</pre>
+<button onclick="goTo('q3')">Soruya geç ➡️</button>
+</div>
+
+<!-- Soru 3 -->
+<div id="q3" style="display:none;">
+<h2>Soru 3</h2>
+<p>Okulun yakınındaki Shell'den alıp çok beğendiğimiz içeceğin içindeki meyvenin gerçek adı neydi? (Nirkij değil...)</p>
+<input type="text" id="answer3">
+<button onclick="checkAnswer3()">Gönder</button>
+<p id="wrong3" style="color:red;"></p>
+</div>
+
+<div id="info3" style="display:none;">
+<h3>Yine doğru! Hadi bakalım.</h3>
+<pre>
+•– ––• –•– –•••• –– –•– –•–•
+• –••• –•• –– –– –•• –•–•
+–••• –• –•••
+</pre>
+<button onclick="goTo('q4')">Soruya geç ➡️</button>
+</div>
+
+<!-- Soru 4 -->
+<div id="q4" style="display:none;">
+<h2>Final Sorusu 🎯</h2>
+<p>Yıldız Teknik'ten çıkıp İstek Kaşgarlı Mahmut'a gitmek isteyen Tuna, hangi 2 toplu taşımayı kullanmalıdır? (Toplu taşıma hattının kodları, harfler büyük olacak ve bütün karakterler bitişik olacak şekilde yazılmalıdır. Örneğin T1 ve M2 ise T1M2)</p>
+<input type="text" id="answer4">
+<button onclick="checkAnswer4()">Gönder</button>
+<p id="wrong4" style="color:red;"></p>
+</div>
+
+<!-- Final ekran -->
+<div id="final" style="display:none;">
+<div style="background:#e0c0ff; padding:15px; border-radius:10px; margin-top:15px; text-align:center;">
+<pre style="font-style:italic; color:#4b0082; font-weight:bold;">
+IVON JBSPIUHION JNFN,
+VEEZ EPZM,
+OSSEO OEİI
+</pre>
+</div>
+
+<br><br><br><br><br><br><br>
+
+<p><b>OYUNUN SONUNA GELDİK EZOLİ! BURAYA KADAR FENA GELDİN! SON BİR MESAJI ÇÖZMEK KALDI! DOĞUM GÜNÜN KUTLU OLSUN!!! ❤️</b></p>
+</div>
+
+</div>
+
+<script>
+function startGame(){
+    document.getElementById('start').style.display = 'none';
+    document.getElementById('q1').style.display = 'block';
+}
+function goTo(id){
+    document.querySelectorAll('#container > div').forEach(d=>d.style.display='none');
+    document.getElementById(id).style.display='block';
+}
+
+// Cevap kontrol fonksiyonları
+function checkAnswer1(){
+    let ans = document.getElementById('answer1').value.toLowerCase();
+    if(ans === 'havesome') goTo('info1');
+    else document.getElementById('wrong1').innerText = 'Mal yannıs nabdın 😡';
+}
+function checkAnswer2(){
+    let ans = document.getElementById('answer2').value.toLowerCase();
+    if(ans === 'kurban bayramı') goTo('info2');
+    else document.getElementById('wrong2').innerText = 'Mal yannıs nabdın 😡';
+}
+function checkAnswer3(){
+    let ans = document.getElementById('answer3').value.toLowerCase();
+    if(ans === 'çarkıfelek meyvesi') goTo('info3');
+    else document.getElementById('wrong3').innerText = 'Mal yannıs nabdın 😡';
+}
+function checkAnswer4(){
+    let ans = document.getElementById('answer4').value.toUpperCase();
+    if(ans === 'M1T4') goTo('final');
+    else document.getElementById('wrong4').innerText = 'Mal yannıs nabdın 😡';
+}
+</script>
+
+</body>
+</html>
